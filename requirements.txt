@@ -1,5 +1,9 @@
 numpy
 pandas
-docx
+python-docx
 pdfplumber
 pytest
+torch
+transformers>=4.37.0
+accelerate
+markdown
