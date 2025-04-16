@@ -57,6 +57,6 @@ def markdown_table_to_docx(df, intro, filename="table.docx"):
         for i, val in enumerate(row):
             row_cells[i].text = str(val)
 
-    doc.save(filename)
+    doc.save(f"../../output/filled_tables/{filename}")
 
 markdown_table_to_docx(df, intro_text)
