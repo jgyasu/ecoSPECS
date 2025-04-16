@@ -1,5 +1,5 @@
 from src.generation.gen_model import gen_response
-# from src.generation.gen_document import gen_table
+from src.generation.gen_document import gen_document
 from src.generation.gen_few_shot_prompt import few_shot_prompt
 
 from src.parsing.docx_parser import extract_tables_from_docx
@@ -21,12 +21,14 @@ def main():
     if choice == "1":
         print("Please enter your prompt:")
         user_prompt = input()
+        print("Please enter the filename:")
+        filename = input()
         headers = {
             "columns": ["Brand", "Engine", "Price"],
         }
         prompt = few_shot_prompt(user_prompt, headers)
         response = gen_response(prompt)
-        print(response)
+        gen_document(response, filename=filename)
     
     elif choice == "2":
         print("Please enter the file path:")
