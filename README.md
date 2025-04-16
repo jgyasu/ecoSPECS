@@ -46,6 +46,8 @@ The program will ask you to choose an option from the following options:
 1. Generate a document containing a short introduction and table using a prompt
 2. Extract tables from a file (pdf and docx supported)
 
+Ouput documents with the generated tables will be saved in the `output` directory.
+
 ## Note
 
 This is a prototype and a possible subset of a functional end-to-end application. There are challenged that I am aware of which needs to be solved when deploying to production.

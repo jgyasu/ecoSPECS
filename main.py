@@ -19,9 +19,9 @@ def main():
     choice = input("\nEnter your choice (1 or 2): ")
 
     if choice == "1":
-        print("Please enter your prompt:")
+        print("\nPlease enter your prompt:", end="")
         user_prompt = input()
-        print("Please enter the filename:")
+        print("\nPlease enter the filename (e.g. name.docx):", end="")
         filename = input()
         headers = {
             "columns": ["Brand", "Engine", "Price"],
@@ -31,7 +31,7 @@ def main():
         gen_document(response, filename=filename)
     
     elif choice == "2":
-        print("Please enter the file path:")
+        print("\nPlease enter the file path:", end="")
         file_path = input()
         file_type = file_path.split('.')[-1]
         
@@ -40,7 +40,7 @@ def main():
         elif file_type == "docx":
             tables = extract_tables_from_docx(file_path)
         else:
-            print("Unsupported file type. Please provide a pdf or docx file.")
+            print("\nUnsupported file type. Please provide a pdf or docx file.")
             return
         
         for i, table in enumerate(tables):
@@ -48,7 +48,7 @@ def main():
             print(table)
 
     else:
-        print("Invalid choice. Please enter 1 or 2.")
+        print("\nInvalid choice. Please enter 1 or 2.")
         return
 
 
