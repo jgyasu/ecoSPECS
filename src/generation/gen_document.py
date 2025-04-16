@@ -4,22 +4,9 @@ import pandas as pd
 from io import StringIO
 import re
 
-from gen_model import gen_response
-from gen_few_shot_prompt import generate_few_shot_prompt
 
-user_prompt = "Create a table of cars and write a short introduction."
-headers = {
-    "columns": ["Brand", "Engine", "Price"],
-}
-
-prompt = generate_few_shot_prompt(user_prompt, headers)
-md_output = gen_response(prompt)
-
-print(md_output)
-
-# Split the markdown into intro and table
-def split_intro_and_table(md_text):
-    lines = md_text.strip().splitlines()
+def split_intro_and_table(response):
+    lines = response.strip().splitlines()
     table_start = next((i for i, line in enumerate(lines) if re.match(r"^\s*\|.*\|\s*$", line)), None)
 
     if table_start is None:
@@ -30,7 +17,7 @@ def split_intro_and_table(md_text):
 
     return intro, table_md
 
-intro_text, md_table = split_intro_and_table(md_output)
+intro_text, md_table = split_intro_and_table(response)
 
 # Parse the Markdown table using pandas
 df = pd.read_csv(StringIO(md_table), sep="|", skipinitialspace=True)

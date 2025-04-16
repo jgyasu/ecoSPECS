@@ -41,7 +41,7 @@ python main.py
 
 The program will ask you to choose an option from the following options:
 
-1. Generate a table using a prompt
+1. Generate a document containing a short introduction and table using a prompt
 2. Extract tables from a file (pdf and docx supported)
 
 ## Note

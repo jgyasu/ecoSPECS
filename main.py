@@ -5,14 +5,18 @@ from src.generation.gen_few_shot_prompt import few_shot_prompt
 from src.parsing.docx_parser import extract_tables_from_docx
 from src.parsing.pdf_parser import extract_tables_from_pdf
 
+from src.utility.header import header
+
+from termcolor import colored
+
 def main():
-    print("""Welcome to Table Generator and Parser.
-          This my solution for ecoSPECS applied project at ESoC 2025.""")
+    print(colored(header, "yellow"))
+    print(colored("\nTable Generator and Parser.\n", "yellow"))
     
-    print("Please choose an option:")
-    print("1. Generate a table using a prompt")
-    print("2. Extract tables from a file (pdf and docx supported)")
-    choice = input("Enter your choice (1 or 2): ")
+    print("Please choose an option:\n")
+    print(f"{colored('[1]', 'blue')} Generate a document containing a short introduction and table using a prompt")
+    print(f"{colored('[2]', 'blue')} Extract tables from a file (pdf and docx supported)")
+    choice = input("\nEnter your choice (1 or 2): ")
 
     if choice == "1":
         print("Please enter your prompt:")
@@ -40,6 +44,11 @@ def main():
         for i, table in enumerate(tables):
             print(f"Table {i+1}:")
             print(table)
+
+    else:
+        print("Invalid choice. Please enter 1 or 2.")
+        return
+
 
 
 if __name__ == "__main__":
