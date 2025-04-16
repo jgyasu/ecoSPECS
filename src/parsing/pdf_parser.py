@@ -3,15 +3,7 @@ import camelot
 import os
 
 def extract_tables_from_pdf(pdf_path):
-    """
-    Extract all tables from a PDF and store them as NumPy arrays.
-    
-    Args:
-        pdf_path (str): Path to the PDF file
-        
-    Returns:
-        list: List of 2D NumPy arrays, each representing a table
-    """
+    """Extract all tables from a PDF and store them as NumPy arrays."""
 
     if not os.path.isfile(pdf_path):
         raise FileNotFoundError(f"The file {pdf_path} does not exist.")

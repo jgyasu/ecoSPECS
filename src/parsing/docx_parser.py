@@ -3,15 +3,7 @@ import docx
 import os
 
 def extract_tables_from_docx(docx_path):
-    """
-    Extract all tables from a Word document and store them as NumPy arrays.
-    
-    Args:
-        docx_path (str): Path to the .docx file
-        
-    Returns:
-        list: List of 2D NumPy arrays, each representing a table
-    """
+    """Extract all tables from a Word document and store them as NumPy arrays."""
 
     if not os.path.isfile(docx_path):
         raise FileNotFoundError(f"The file {docx_path} does not exist.")
