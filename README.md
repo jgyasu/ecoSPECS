@@ -5,11 +5,11 @@ Solution for the ecoSPECS challenge in ESoC 2025
 
 ## Features
 
-Capable of generating tables using GenAI based on a given prompt, rows and columns can be specified too. The parsing module is capable of parsing a `pdf` or a `docx` file and extracts the table from it and stores them in a list of 2-D NumPy arrays.
+Capable of generating tables using GenAI based on a given prompt, rows and columns can be specified too. The parsing module is capable of parsing a `pdf` or a `docx` file and extracts the table from it and stores them in a list of 2-D NumPy arrays. A testing infrastrucuture for the `parsing` module is also provided.
 
 - **Bonus 1**: Uses an open source open-weight LLM `Qwen/Qwen2.5-1.5B-Instruct` via Hugging Face transformers.
 
-- **Bonus 2**: Uses few shot learning to generate a table from a user prompt without changing the generative model weights or architecture since language models are few-shot learners.
+- **Bonus 2**: Uses few shot learning to generate a table from a user prompt without changing the generative model weights or architecture since language models are few-shot learners without any rows and columns specified.
 
 
 - **Bonus 3**: Writes a short introduction paragraph and the generated table to `doc` or `pdf` based on the preference.
@@ -47,6 +47,8 @@ The program will ask you to choose an option from the following options:
 2. Extract tables from a file (pdf and docx supported)
 
 Ouput documents with the generated tables will be saved in the `output` directory.
+
+Example: The `output` directory contains a generated document from the prompt I tried: `Create a table comparing cars`.
 
 ## Testing
 
