@@ -1,6 +1,7 @@
 def few_shot_prompt(user_prompt):
     """Generates a prompt for few-shot learning.
     Takes advantage of the fact that LLMs are few-shot learners."""
+    
     examples = [
         {
             "user_prompt": "Fill in a table of popular programming languages and their characteristics.",

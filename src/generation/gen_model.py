@@ -4,6 +4,7 @@ from transformers import AutoModelForCausalLM, AutoTokenizer
 
 
 def gen_response(prompt):
+    """Performs LLM calls to generate a response based on the given prompt."""
 
     model_name = "Qwen/Qwen2.5-1.5B-Instruct"
 

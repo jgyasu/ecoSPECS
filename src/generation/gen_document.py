@@ -6,6 +6,7 @@ import re
 import os
 
 def gen_document(response, filename):
+    """Generate a Word document from the LLM generated response."""
 
     output_dir="output/"
 
