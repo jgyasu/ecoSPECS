@@ -1,4 +1,4 @@
-def generate_few_shot_prompt(user_prompt, headers):
+def few_shot_prompt(user_prompt, headers):
     examples = [
         {
             "user_prompt": "Fill in a table of popular programming languages and their characteristics.",
