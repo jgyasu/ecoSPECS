@@ -1,6 +1,8 @@
 # ecoSPECS
 Solution for the ecoSPECS challenge in ESoC 2025
 
+![image](https://github.com/user-attachments/assets/0ef28217-341d-4f88-a60a-e99117d92f8b)
+
 ## Features
 
 Capable of generating tables using GenAI based on a given prompt, rows and columns can be specified too. The parsing module is capable of parsing a `pdf` or a `docx` file and extracts the table from it and stores them in a list of 2-D NumPy arrays.
