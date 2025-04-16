@@ -48,6 +48,15 @@ The program will ask you to choose an option from the following options:
 
 Ouput documents with the generated tables will be saved in the `output` directory.
 
+## Testing
+
+The tests for the parsing module can be run using `pytest` in the `src/parsing` directory by running:
+```bash
+pytest test_parsing.py
+```
+
+The tasks for ESoC didn't include writing tests for the generation module, but since they do LLM calls, mocking them in the future would be the optimal choice.
+
 ## Note
 
 This is a prototype and a possible subset of a functional end-to-end application. There are challenged that I am aware of which needs to be solved when deploying to production.

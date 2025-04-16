@@ -31,7 +31,7 @@ def main():
         gen_document(response, filename=filename)
     
     elif choice == "2":
-        print("\nPlease enter the file path:", end="")
+        print("\nPlease enter the file path (e.g. data/test.pdf or data.test.docx):", end="")
         file_path = input()
         file_type = file_path.split('.')[-1]
         
