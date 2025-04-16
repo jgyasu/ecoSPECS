@@ -50,7 +50,8 @@ def few_shot_prompt(user_prompt):
     prompt += f"**User Prompt:**\n{user_prompt}\n"
     prompt += "**Expected Output:**\n"
 
-    prompt += ("For the given prompt, generate appropriate headers (rows and columns) based on the subject. "
+    prompt += ("For the given prompt, generate appropriate headers (rows and columns) based on the subject."
+               "If there is a column then it should not be empty."
                "Then, complete the table with relevant information. The headers should make sense according to the context of the prompt.\n")
 
     return prompt

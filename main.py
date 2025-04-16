@@ -26,6 +26,7 @@ def main():
 
         prompt = few_shot_prompt(user_prompt)
         response = gen_response(prompt)
+        # print(response)
         gen_document(response, filename=filename)
     
     elif choice == "2":
