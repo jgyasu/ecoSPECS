@@ -23,10 +23,8 @@ def main():
         user_prompt = input()
         print("\nPlease enter the filename (e.g. name.docx):", end="")
         filename = input()
-        headers = {
-            "columns": ["Brand", "Engine", "Price"],
-        }
-        prompt = few_shot_prompt(user_prompt, headers)
+
+        prompt = few_shot_prompt(user_prompt)
         response = gen_response(prompt)
         gen_document(response, filename=filename)
     

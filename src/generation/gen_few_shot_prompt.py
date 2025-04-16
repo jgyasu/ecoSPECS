@@ -1,8 +1,8 @@
-def few_shot_prompt(user_prompt, headers):
+def few_shot_prompt(user_prompt):
+    # Define some default examples
     examples = [
         {
             "user_prompt": "Fill in a table of popular programming languages and their characteristics.",
-            "headers": {"columns": ["Language", "Typing Discipline", "Paradigm", "First Appeared"]},
             "intro": "Programming languages vary in their design philosophies and usage contexts. Here's a comparison of some popular ones based on typing, paradigms, and origin dates.",
             "table": """| Language   | Typing Discipline | Paradigm              | First Appeared |
                         |------------|-------------------|------------------------|----------------|
@@ -14,10 +14,6 @@ def few_shot_prompt(user_prompt, headers):
         },
         {
             "user_prompt": "Show a comparison of renewable energy sources.",
-            "headers": {
-                "rows": ["Solar", "Wind", "Hydro", "Geothermal"],
-                "columns": ["Cost", "Efficiency", "Environmental Impact"]
-            },
             "intro": "Renewable energy sources differ in terms of implementation cost, efficiency, and environmental footprint. The table below outlines a comparison of key options.",
             "table": """| Source     | Cost       | Efficiency | Environmental Impact      |
                         |------------|------------|------------|---------------------------|
@@ -27,47 +23,35 @@ def few_shot_prompt(user_prompt, headers):
                         | Geothermal | Medium     | High       | Low emissions             |"""
         },
         {
-            "user_prompt": "Make a table comparing planets in our solar system.",
-            "headers": {
-                "rows": ["Mercury", "Venus", "Earth", "Mars"],
-                "columns": ["Diameter (km)", "Moons", "Atmosphere"]
-            },
-            "intro": "The planets in our solar system have distinct physical and atmospheric characteristics. Here's a quick comparison of four terrestrial planets.",
-            "table": """| Planet  | Diameter (km) | Moons | Atmosphere            |
-                        |---------|----------------|-------|------------------------|
-                        | Mercury | 4,879          | 0     | Thin, mostly oxygen    |
-                        | Venus   | 12,104         | 0     | CO₂, sulfuric acid     |
-                        | Earth   | 12,742         | 1     | Nitrogen, oxygen       |
-                        | Mars    | 6,779          | 2     | CO₂, thin atmosphere   |"""
+            "user_prompt": "Compare different smartphone brands and their features in terms of price, performance, and camera quality.",
+            "intro": "Smartphone brands differ in price, performance, and camera features. Here's a comparison based on these factors.",
+            "table": """| Brand     | Price   | Performance  | Camera Quality | Operating System |
+                        |-----------|---------|--------------|----------------|------------------|
+                        | Apple     | High    | Very High    | Excellent      | iOS              |
+                        | Samsung   | Medium  | High         | Good           | Android          |
+                        | OnePlus   | Medium  | High         | Very Good      | Android          |
+                        | Xiaomi    | Low     | Medium       | Fair           | Android          |"""
         }
     ]
 
     prompt = (
         "You are a helpful assistant. For each user prompt, first write a short, informative introduction "
-        "about the subject. Then, based on the given headers (rows, columns, or both), complete the table "
-        "with accurate and plausible information.\n\n"
+        "about the subject. Then, based on your understanding of the prompt, generate a table with relevant headers (rows and columns), "
+        "and fill in the table with accurate and plausible information.\n\n"
     )
 
+    # Add examples
     for ex in examples:
         prompt += f"**User Prompt:**\n{ex['user_prompt']}\n"
-        ex_headers = []
-        if "columns" in ex["headers"]:
-            ex_headers.append("Columns: " + ", ".join(ex["headers"]["columns"]))
-        if "rows" in ex["headers"]:
-            ex_headers.append("Rows: " + ", ".join(ex["headers"]["rows"]))
-        prompt += f"**Headers:**\n" + "\n".join(ex_headers) + "\n"
         prompt += f"**Expected Output:**\n{ex['intro']}\n{ex['table']}\n\n"
 
-    # User input
+    # Now, for the user prompt:
     prompt += "**Your Turn:**\n"
     prompt += f"**User Prompt:**\n{user_prompt}\n"
-
-    input_headers = []
-    if "columns" in headers:
-        input_headers.append("Columns: " + ", ".join(headers["columns"]))
-    if "rows" in headers:
-        input_headers.append("Rows: " + ", ".join(headers["rows"]))
-    prompt += "**Headers:**\n" + "\n".join(input_headers) + "\n"
     prompt += "**Expected Output:**\n"
+
+    # Instructing LLM to generate its own headers
+    prompt += ("For the given prompt, generate appropriate headers (rows and columns) based on the subject. "
+               "Then, complete the table with relevant information. The headers should make sense according to the context of the prompt.\n")
 
     return prompt
