@@ -1,5 +1,6 @@
 def few_shot_prompt(user_prompt):
-    # Define some default examples
+    """Generates a prompt for few-shot learning.
+    Takes advantage of the fact that LLMs are few-shot learners."""
     examples = [
         {
             "user_prompt": "Fill in a table of popular programming languages and their characteristics.",
@@ -40,17 +41,14 @@ def few_shot_prompt(user_prompt):
         "and fill in the table with accurate and plausible information.\n\n"
     )
 
-    # Add examples
     for ex in examples:
         prompt += f"**User Prompt:**\n{ex['user_prompt']}\n"
         prompt += f"**Expected Output:**\n{ex['intro']}\n{ex['table']}\n\n"
 
-    # Now, for the user prompt:
     prompt += "**Your Turn:**\n"
     prompt += f"**User Prompt:**\n{user_prompt}\n"
     prompt += "**Expected Output:**\n"
 
-    # Instructing LLM to generate its own headers
     prompt += ("For the given prompt, generate appropriate headers (rows and columns) based on the subject. "
                "Then, complete the table with relevant information. The headers should make sense according to the context of the prompt.\n")
 
